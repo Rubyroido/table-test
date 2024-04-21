@@ -29,6 +29,10 @@ function App() {
     setCurrentPage(page)
   }
 
+  function onChangePageSize(size) {
+    setPageSize(size)
+  }
+
   useEffect(() => {
     if (sessionStorage.getItem('token')) {
       setToken(sessionStorage.getItem('token'))
@@ -58,7 +62,7 @@ function App() {
     <div className="App">
       <Header totalItems={totalItems} />
       <Table currentItems={currentItems} />
-      <Footer currentPage={currentPage} pageNumbers={pageNumbers} onChangePage={onChangePage}/>
+      <Footer currentPage={currentPage} pageNumbers={pageNumbers} onChangePage={onChangePage} onChangePageSize={onChangePageSize}/>
     </div>
   );
 }

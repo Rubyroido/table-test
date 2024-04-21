@@ -1,7 +1,7 @@
 import './Footer.css';
 import { useState } from 'react';
 
-export default function Footer({ currentPage, pageNumbers, onChangePage }) {
+export default function Footer({ currentPage, pageNumbers, onChangePage, onChangePageSize }) {
   const [minPage, setMinPage] = useState(0);
   const [maxPage, setMaxPage] = useState(10);
 
@@ -25,6 +25,10 @@ export default function Footer({ currentPage, pageNumbers, onChangePage }) {
     }
   }
 
+  function handlePageSize(value) {
+    onChangePageSize(value)
+  }
+  
   return (
     <div className='footer'>
       <div className='pagination'>
@@ -44,9 +48,9 @@ export default function Footer({ currentPage, pageNumbers, onChangePage }) {
           currentPage === pageNumbers[pageNumbers.length - 1] ? null : <button type='button' className='button-right' onClick={() => handleRight(currentPage + 1)} />
         }
       </div>
-      <form>
+      <form className='footer__size'>
         <label htmlFor='size-select'>Показывать по:</label>
-        <select name='page-size' id='size-select'>
+        <select name='page-size' id='size-select' onChange={(e)=>handlePageSize(e.target.value)} className='footer__size-select'>
           <option value={10}>10</option>
           <option value={20}>20</option>
           <option value={50}>50</option>
