@@ -85,7 +85,7 @@ function App() {
       <Header totalItems={totalItems} openPopup={openPopup} onSearch={onSearch}/>
       <Table currentItems={currentItems} openItemChange={openItemChange}/>
       <Footer currentPage={currentPage} pageNumbers={pageNumbers} onChangePage={onChangePage} onChangePageSize={onChangePageSize} />
-      <Popup isOpened={isPopupOpened} closePopup={closePopup} itemToChange={itemToChange}/>
+      <Popup isOpened={isPopupOpened} closePopup={closePopup} itemToChange={itemToChange} token={token}/>
     </div>
   );
 }
