@@ -1,0 +1,51 @@
+.table {
+  position: relative;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.table__header {
+  height: 44px;
+  background-color: #F6F4F4;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: -0.019999999552965164px;
+  color: #514A4A;
+}
+
+.table__col {
+  width: 358px;
+  text-align: left;
+  padding-left: 24px;
+  box-sizing: border-box;
+}
+
+.table__col-button {
+  width: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+.table__button-edit {
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/edit-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #F2EEEE;
+  border-radius: 6px;
+  background-color: white;
+  margin: 18px 24px;
+}
+
+.table__row {
+  height: 68px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #F2EEEE;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.05000000074505806px;
+  color: #352424;
+}
