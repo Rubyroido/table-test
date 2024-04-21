@@ -6,4 +6,9 @@
   justify-content: center;
   align-items: center;
   font-family: "Inter", Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+body {
+  position: relative;
 }

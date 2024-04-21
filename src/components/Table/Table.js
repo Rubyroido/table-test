@@ -1,6 +1,6 @@
 import './Table.css';
 
-export default function Table({ currentItems }) {
+export default function Table({ currentItems, openItemChange }) {
   return (
     <table className='table'>
       <thead className='table__header'>
@@ -20,7 +20,7 @@ export default function Table({ currentItems }) {
                 <td className='table__col'>{item.measurement_units}</td>
                 <td className='table__col'>{item.code}</td>
                 <td className='table__col-button'>
-                  <button className='table__button-edit'></button>
+                  <button className='table__button-edit' onClick={()=> openItemChange(item)}></button>
                 </td>
               </tr>
             )

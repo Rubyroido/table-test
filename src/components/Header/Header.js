@@ -1,6 +1,6 @@
 import './Header.css';
 
-export default function Header({ totalItems }) {
+export default function Header({ totalItems, openPopup }) {
   return (
     <div className='header'>
       <div className='header__description'>
@@ -13,7 +13,7 @@ export default function Header({ totalItems }) {
           <input className='header__search-input' placeholder='Поиск по названию' type='text'></input>
           <button className='header__search-submit' type='submit'>Поиск</button>
         </form>
-        <button className='header__add-item' type='button'>
+        <button className='header__add-item' type='button' onClick={openPopup}>
           <div className='header__add-icon' />
           Новая позиция</button>
       </div>

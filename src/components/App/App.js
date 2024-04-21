@@ -4,6 +4,7 @@ import { login, getItems } from '../../utils/Api';
 import Header from '../Header/Header';
 import Table from '../Table/Table';
 import Footer from '../Footer/Footer';
+import Popup from '../Popup/Popup';
 
 function App() {
   const [token, setToken] = useState('');
@@ -12,12 +13,12 @@ function App() {
   const [pageSize, setPageSize] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
-  const [totalPages, setTotalPages] = useState(0);
   const [pageNumbers, setPageNumbers] = useState([]);
+  const [isPopupOpened, setIsPopupOpened] = useState(false);
+  const [itemToChange, setItemToChange] = useState(null);
 
   function countPages(totalItems, pageSize) {
     const numOfPages = Math.ceil(totalItems / pageSize);
-    setTotalPages(numOfPages)
     const arrayOfPages = [];
     for (let i = 1; i <= numOfPages; i++) {
       arrayOfPages.push(i)
@@ -31,6 +32,20 @@ function App() {
 
   function onChangePageSize(size) {
     setPageSize(size)
+  }
+
+  function openPopup() {
+    setIsPopupOpened(true)
+  }
+
+  function closePopup() {
+    setItemToChange(null)
+    setIsPopupOpened(false)
+  }
+
+  function openItemChange(item) {
+    setItemToChange(item)
+    openPopup()
   }
 
   useEffect(() => {
@@ -60,9 +75,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header totalItems={totalItems} />
-      <Table currentItems={currentItems} />
-      <Footer currentPage={currentPage} pageNumbers={pageNumbers} onChangePage={onChangePage} onChangePageSize={onChangePageSize}/>
+      <Header totalItems={totalItems} openPopup={openPopup} />
+      <Table currentItems={currentItems} openItemChange={openItemChange}/>
+      <Footer currentPage={currentPage} pageNumbers={pageNumbers} onChangePage={onChangePage} onChangePageSize={onChangePageSize} />
+      <Popup isOpened={isPopupOpened} closePopup={closePopup} itemToChange={itemToChange}/>
     </div>
   );
 }
