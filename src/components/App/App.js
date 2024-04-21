@@ -17,8 +17,8 @@ function App() {
   const [isPopupOpened, setIsPopupOpened] = useState(false);
   const [itemToChange, setItemToChange] = useState(null);
   const [query, setQuery] = useState('');
-  const sortBy = '';
-  const order = '';
+  const [sortBy, setSortBy] = useState('');
+  const [order, setOrder] = useState('');
 
   function countPages(totalItems, pageSize) {
     const numOfPages = Math.ceil(totalItems / pageSize);
@@ -55,6 +55,18 @@ function App() {
     setQuery(query)
   }
 
+  function onSort() {
+    setSortBy('name')
+    if(order==='') {
+      setOrder('ASC')
+    } else if(order==='ASC') {
+      setOrder('DESC')
+    } else {
+      setOrder('')
+      setSortBy('')
+    }
+  }
+
   useEffect(() => {
     if (sessionStorage.getItem('token')) {
       setToken(sessionStorage.getItem('token'))
@@ -78,14 +90,14 @@ function App() {
         countPages(totalItems, pageSize)
       })
       .catch(err => console.log(err))
-  }, [currentPage, loggedIn, pageSize, query, token, totalItems])
+  }, [currentPage, loggedIn, order, pageSize, query, token, totalItems])
 
   return (
     <div className="App">
-      <Header totalItems={totalItems} openPopup={openPopup} onSearch={onSearch}/>
-      <Table currentItems={currentItems} openItemChange={openItemChange}/>
+      <Header totalItems={totalItems} openPopup={openPopup} onSearch={onSearch} />
+      <Table currentItems={currentItems} openItemChange={openItemChange} onSort={onSort} order={order}/>
       <Footer currentPage={currentPage} pageNumbers={pageNumbers} onChangePage={onChangePage} onChangePageSize={onChangePageSize} />
-      <Popup isOpened={isPopupOpened} closePopup={closePopup} itemToChange={itemToChange} token={token}/>
+      <Popup isOpened={isPopupOpened} closePopup={closePopup} itemToChange={itemToChange} token={token} />
     </div>
   );
 }
