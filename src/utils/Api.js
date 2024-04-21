@@ -25,8 +25,8 @@ export const login = () => {
     })
 }
 
-export const getItems = (currentPage, pageSize, token) => {
-  return fetch(`${URL}wh/items?page=${currentPage}&pageSize=${pageSize}`, {
+export const getItems = (currentPage, pageSize, token, query, sortBy, order) => {
+  return fetch(`${URL}wh/items?page=${currentPage}&pageSize=${pageSize}&itemName=${query}&sortBy=${sortBy}$sortOrder=${order}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
